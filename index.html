@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Testy Kondycyjne</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="hero">
+      <p class="eyebrow">Interwaly i testy</p>
+      <h1>Testy kondycyjne</h1>
+      <p class="subhead">
+        Ustaw parametry i licz wynik w czasie rzeczywistym na podstawie wzorow ruchu jednostajnego.
+      </p>
+    </header>
+
+    <section class="card mode-card">
+      <h2>Tryb ruchu</h2>
+      <div class="mode-grid">
+        <button class="mode-button active" data-mode="linear" type="button">
+          Poruszanie liniowe
+        </button>
+        <button class="mode-button" data-mode="direction" type="button">
+          Poruszanie ze zmiana kierunku biegu
+        </button>
+      </div>
+    </section>
+
+    <section class="card settings-card">
+      <h2>Parametry</h2>
+      <div class="slider-grid">
+        <label class="slider-field">
+          <span>Dystans [m]</span>
+          <output id="distanceValue">20</output>
+          <input id="distance" type="range" min="0" max="400" step="5" value="20">
+        </label>
+
+        <label class="slider-field">
+          <span>Predkosc [km/h]</span>
+          <output id="speedValue">10.0</output>
+          <input id="speed" type="range" min="5" max="32" step="0.1" value="10">
+        </label>
+
+        <label class="slider-field">
+          <span>Czas [s]</span>
+          <output id="timeValue">7.2</output>
+          <input id="time" type="range" min="0" max="300" step="0.1" value="7.2">
+        </label>
+
+        <label class="slider-field">
+          <span>Liczba odcinkow [n]</span>
+          <output id="segmentsValue">6</output>
+          <input id="segments" type="range" min="1" max="30" step="1" value="6">
+        </label>
+
+        <label class="slider-field">
+          <span>Czas przerwy miedzy odcinkami [s]</span>
+          <output id="restValue">20</output>
+          <input id="rest" type="range" min="0" max="300" step="1" value="20">
+        </label>
+
+        <label class="slider-field" id="changesWrapper">
+          <span>Liczba zmian kierunku</span>
+          <output id="changesValue">0</output>
+          <input id="changes" type="range" min="0" max="20" step="1" value="0">
+        </label>
+      </div>
+      <p class="hint">
+        Zasada synchronizacji: zmiana <strong>dystansu</strong> lub <strong>predkosci</strong> przelicza czas,
+        a zmiana <strong>czasu</strong> przelicza predkosc.
+      </p>
+    </section>
+
+    <section class="card results-card">
+      <h2>Wynik biezacy</h2>
+      <div class="result-grid">
+        <div class="metric">
+          <p class="metric-label">Czas z wzoru t = s / v</p>
+          <p class="metric-value" id="formulaTime">00:07.20</p>
+        </div>
+        <div class="metric">
+          <p class="metric-label">Kara za zmiany kierunku</p>
+          <p class="metric-value" id="penaltyTime">+0.00 s</p>
+        </div>
+        <div class="metric">
+          <p class="metric-label">Czas odcinka (koncowy)</p>
+          <p class="metric-value" id="segmentTime">00:07.20</p>
+        </div>
+        <div class="metric">
+          <p class="metric-label">Calkowity czas sesji</p>
+          <p class="metric-value" id="totalTime">01:23.20</p>
+        </div>
+        <div class="metric">
+          <p class="metric-label">Calkowity dystans</p>
+          <p class="metric-value" id="totalDistance">120 m</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card timer-card">
+      <h2>Timer interwalowy</h2>
+      <div class="timer-panel">
+        <p class="phase" id="phaseLabel">Gotowy</p>
+        <p class="segment-counter" id="segmentLabel">Odcinek 0 / 0</p>
+        <p class="clock" id="timeLeft">00:00</p>
+        <p class="countdown" id="countdownHint"></p>
+      </div>
+      <div class="actions">
+        <button id="startBtn" type="button">Start</button>
+        <button id="pauseBtn" type="button">Pauza</button>
+        <button id="resetBtn" type="button" class="ghost">Reset</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

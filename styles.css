@@ -1,0 +1,251 @@
+:root {
+  --bg-1: #f4f1e7;
+  --bg-2: #dbe4f4;
+  --panel: #ffffffcc;
+  --ink: #14213d;
+  --muted: #4c5d75;
+  --accent: #f95738;
+  --accent-2: #2f89fc;
+  --ok: #0c8f5f;
+  --shadow: 0 16px 42px rgba(20, 33, 61, 0.15);
+  --radius: 18px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Trebuchet MS", "Geneva", "Tahoma", sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 10% 20%, #fddcb8 0%, transparent 24%),
+    radial-gradient(circle at 85% 12%, #bfd8ff 0%, transparent 34%),
+    linear-gradient(140deg, var(--bg-1), var(--bg-2));
+  min-height: 100vh;
+}
+
+.app-shell {
+  width: min(960px, 100% - 2rem);
+  margin: 2rem auto 3rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.hero {
+  background: linear-gradient(135deg, #13243e, #1a3760);
+  color: #fff;
+  border-radius: var(--radius);
+  padding: 1.2rem 1.3rem;
+  box-shadow: var(--shadow);
+}
+
+.hero h1 {
+  margin: 0.2rem 0 0.6rem;
+  font-size: clamp(1.5rem, 4vw, 2.2rem);
+}
+
+.eyebrow {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.75rem;
+  opacity: 0.86;
+}
+
+.subhead {
+  margin: 0;
+  max-width: 58ch;
+  color: #d7e7ff;
+}
+
+.card {
+  background: var(--panel);
+  backdrop-filter: blur(6px);
+  border-radius: var(--radius);
+  padding: 1rem 1.05rem 1.2rem;
+  box-shadow: var(--shadow);
+}
+
+.card h2 {
+  margin: 0 0 0.8rem;
+  font-size: 1.15rem;
+}
+
+.mode-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.mode-button {
+  border: 2px solid #d2d8e7;
+  background: #fff;
+  border-radius: 14px;
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: var(--ink);
+  padding: 0.9rem 0.75rem;
+  cursor: pointer;
+  transition: all 160ms ease;
+}
+
+.mode-button:hover {
+  transform: translateY(-1px);
+  border-color: #a7bad9;
+}
+
+.mode-button.active {
+  border-color: var(--accent-2);
+  background: linear-gradient(125deg, #e9f1ff, #f0f8ff);
+  box-shadow: inset 0 0 0 1px #fff;
+}
+
+.slider-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+
+.slider-field {
+  background: #fff;
+  border: 1px solid #d7deea;
+  border-radius: 12px;
+  padding: 0.72rem 0.75rem;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.slider-field span {
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.slider-field output {
+  font-family: "Consolas", "Lucida Console", monospace;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+input[type="range"] {
+  width: 100%;
+  accent-color: var(--accent-2);
+}
+
+.hint {
+  margin: 0.8rem 0 0;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.result-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.7rem;
+}
+
+.metric {
+  background: #fff;
+  border: 1px solid #d7deea;
+  border-radius: 12px;
+  padding: 0.65rem 0.7rem;
+}
+
+.metric-label {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.metric-value {
+  margin: 0.35rem 0 0;
+  font-size: 1.18rem;
+  font-family: "Consolas", "Lucida Console", monospace;
+}
+
+.timer-panel {
+  border-radius: 14px;
+  background: linear-gradient(135deg, #0f2138, #1e4a79);
+  color: #fff;
+  padding: 1rem;
+  text-align: center;
+}
+
+.phase {
+  margin: 0;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+  opacity: 0.86;
+}
+
+.segment-counter {
+  margin: 0.45rem 0 0;
+  color: #dce8ff;
+}
+
+.clock {
+  margin: 0.55rem 0 0.2rem;
+  font-size: clamp(2rem, 7vw, 3.2rem);
+  font-family: "Consolas", "Lucida Console", monospace;
+}
+
+.countdown {
+  min-height: 1.4rem;
+  margin: 0;
+  color: #ffe7cc;
+  font-weight: 700;
+}
+
+.actions {
+  margin-top: 0.9rem;
+  display: flex;
+  gap: 0.6rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.actions button {
+  border: none;
+  border-radius: 12px;
+  padding: 0.68rem 1.15rem;
+  font-weight: 700;
+  cursor: pointer;
+  background: var(--accent);
+  color: #fff;
+  transition: transform 160ms ease, filter 160ms ease;
+}
+
+.actions button:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.05);
+}
+
+.actions button:disabled,
+.mode-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.58;
+  transform: none;
+}
+
+.actions .ghost {
+  background: #2d486b;
+}
+
+.hidden {
+  display: none;
+}
+
+@media (max-width: 880px) {
+  .slider-grid,
+  .result-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .mode-grid {
+    grid-template-columns: 1fr;
+  }
+}
